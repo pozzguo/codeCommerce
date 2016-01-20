@@ -17,6 +17,8 @@ Route::get('/', function () {
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::get('admin/category', 'AdminCategoryController@index');
+Route::get('admin/producty', 'AdminProductyController@index');
 
 Route::get('phpinfo', function () {
     return phpinfo();
