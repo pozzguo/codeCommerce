@@ -27,7 +27,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('category', ['as' => 'adminCategory','uses' => 'AdminCategoryController@index']);
 
 //Crud:
-    Route::post('category/{id}/create', ['as' => 'adminCategoryCreate', 'uses' => 'AdminCategoryController@create']);
+    Route::post('category/create', ['as' => 'adminCategoryCreate', 'uses' => 'AdminCategoryController@create']);
     Route::get('category/{id}/read', ['as' => 'adminCategoryRead', 'uses' => 'AdminCategoryController@read']);
     Route::put('category/{id}/update', ['as' => 'adminCategoryUpdate', 'uses' => 'AdminCategoryController@update']);
     Route::delete('category/{id}/delete', ['as' => 'adminCategoryDelete', 'uses' => 'AdminCategoryController@delete']);
@@ -43,7 +43,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('producty', ['as' => 'adminProducty','uses' => 'AdminProductyController@index']);
 
 //Crud:
-    Route::post('producty/{id}/create', ['as' => 'adminProductyCreate', 'uses' => 'AdminProductyController@create']);
+    Route::post('producty/create', ['as' => 'adminProductyCreate', 'uses' => 'AdminProductyController@create']);
     Route::get('producty/{id}/read', ['as' => 'adminProductyRead', 'uses' => 'AdminProductyController@read']);
     Route::put('producty/{id}/update', ['as' => 'adminProductyUpdate', 'uses' => 'AdminProductyController@update']);
     Route::delete('producty/{id}/delete', ['as' => 'adminProductyDelete', 'uses' => 'AdminProductyController@delete']);
