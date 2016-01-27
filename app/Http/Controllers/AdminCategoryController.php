@@ -16,7 +16,7 @@ class AdminCategoryController extends Controller
         
         $categories = $this->categories->all();
              
-        return view("admincategory",  compact('categories'));
+        return view("categories.index",  compact('categories'));
         
     }
     
