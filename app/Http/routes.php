@@ -54,7 +54,13 @@ Route::group(['prefix' => 'admin'], function() {
     Route::delete('producty', 'AdminProductyController@deleteDelete');
 });
 
+Route::group(['middleware' => ['web']], function () {
 
+    Route::get('categories','CategoriesController@index');
+    Route::post('categories','CategoriesController@store');
+    Route::get('categories/create','CategoriesController@create');
+
+});
 
 Route::get('phpinfo', function () {
     return phpinfo();

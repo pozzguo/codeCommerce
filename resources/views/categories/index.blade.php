@@ -10,6 +10,7 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Description</th>
                         </tr>                        
@@ -17,6 +18,7 @@
                     <tbody>
                         @foreach($categories as $category)
                         <tr>
+                            <td>{{ $category->id }}</td>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->description }}</td>
                             <td><a href="{{ url('/admin/category/'.$category->id.'/update') }}">Edit</a> | <a href="{{ url('/admin/category/'.$category->id.'/delete') }}">Delete</a></td>
