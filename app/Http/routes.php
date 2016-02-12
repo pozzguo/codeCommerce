@@ -54,9 +54,12 @@ Route::group(['prefix' => 'admin'], function() {
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::get('categories', 'CategoriesController@index');
-    Route::post('categories', 'CategoriesController@store');
-    Route::get('categories/create', 'CategoriesController@create');
+    Route::get('categories',['as' => 'categories.index', 'uses' => 'CategoriesController@index']);
+    Route::post('categories',['as' => 'categories.store', 'uses' =>  'CategoriesController@store']);
+    Route::put('categories/{id}/update',['as' => 'categories.update', 'uses' =>  'CategoriesController@update']);
+    Route::get('categories/create',['as' => 'categories.create', 'uses' =>  'CategoriesController@create']);
+    Route::get('categories/{id}/destroy',['as' => 'categories.destroy', 'uses' => 'CategoriesController@destroy']);
+    Route::get('categories/{id}/edit',['as' => 'categories.edit', 'uses' => 'CategoriesController@edit']);
 
     // Authentication routes...
     Route::get('auth/login', 'Auth\AuthController@getLogin');

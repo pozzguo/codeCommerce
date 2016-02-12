@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading"><h2>Create a Category</h2></div>  
+                <div class="panel-heading"><h2>Edit Category: {{ $category->name }}</h2></div>  
                 
                     @if ($errors->any())
                     
@@ -19,26 +19,27 @@
                     
                     @endif
                 
-                    {!! Form::open(['route'=>'categories.store']) !!}
+                    {!! Form::open(['route'=>['categories.update',$category->id],'method'=>'put']) !!}
                     
                     <div class="form-group">
 
                         {!! Form::label('name','Name: ') !!} 
-                        {!! Form::text('name',null,['class' => 'form-control']) !!}
+                        {!! Form::text('name',$category->name,['class' => 'form-control']) !!}
                         
                     </div>
                     
                     <div class="form-group">
 
                         {!! Form::label('description','Description: ') !!} 
-                        {!! Form::textarea('description',null,['class' => 'form-control']) !!}
+                        {!! Form::textarea('description',$category->description,['class' => 'form-control']) !!}
                         
                     </div>
                     
                     <div class="form-group">
 
-                        {!! Form::submit('Add Category',['class' => 'btn btn-primary']) !!} 
+                        {!! Form::submit('Save Category',['class' => 'btn btn-primary']) !!} 
                         <a href="{{ route('categories.index') }}" class ="btn btn-danger">Cancel</a>
+                        
                         
                     </div>
 
