@@ -24,7 +24,7 @@ Route::group(['prefix' => 'admin'], function() {
 
 //Category:
 //List:
-    Route::get('category', ['as' => 'adminCategory','uses' => 'AdminCategoryController@index']);
+    Route::get('category', ['as' => 'adminCategory', 'uses' => 'AdminCategoryController@index']);
 
 //Crud:
     Route::post('category/create', ['as' => 'adminCategoryCreate', 'uses' => 'AdminCategoryController@create']);
@@ -36,11 +36,9 @@ Route::group(['prefix' => 'admin'], function() {
     //Route::post('category', 'AdminCategoryController@postCreate');
     //Route::put('category', 'AdminCategoryController@putUpdate');
     //Route::delete('category', 'AdminCategoryController@deleteDelete');
-
-
 //Producty:
 //List:
-    Route::get('producty', ['as' => 'adminProducty','uses' => 'AdminProductyController@index']);
+    Route::get('producty', ['as' => 'adminProducty', 'uses' => 'AdminProductyController@index']);
 
 //Crud:
     Route::post('producty/create', ['as' => 'adminProductyCreate', 'uses' => 'AdminProductyController@create']);
@@ -56,10 +54,18 @@ Route::group(['prefix' => 'admin'], function() {
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::get('categories','CategoriesController@index');
-    Route::post('categories','CategoriesController@store');
-    Route::get('categories/create','CategoriesController@create');
+    Route::get('categories', 'CategoriesController@index');
+    Route::post('categories', 'CategoriesController@store');
+    Route::get('categories/create', 'CategoriesController@create');
 
+    // Authentication routes...
+    Route::get('auth/login', 'Auth\AuthController@getLogin');
+    Route::post('auth/login', 'Auth\AuthController@postLogin');
+    Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+    // Registration routes...
+    Route::get('auth/register', 'Auth\AuthController@getRegister');
+    Route::post('auth/register', 'Auth\AuthController@postRegister');
 });
 
 Route::get('phpinfo', function () {
