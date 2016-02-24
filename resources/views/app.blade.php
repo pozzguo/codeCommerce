@@ -51,8 +51,8 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Models<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/categories') }}">Categories</a></li>
-                                <li><a href="{{ url('/products') }}">Products</a></li>
+                                <li><a href="{{ route('categories.index') }}">Categories</a></li>
+                                <li><a href="{{ route('products.index') }}">Products</a></li>
                             </ul>
                         </li>
                     </ul>
