@@ -41,6 +41,15 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('create', ['as' => 'products.create', 'uses' => 'ProductsController@create']);
             Route::get('{id}/destroy', ['as' => 'products.destroy', 'uses' => 'ProductsController@destroy']);
             Route::get('{id}/edit', ['as' => 'products.edit', 'uses' => 'ProductsController@edit']);
+            
+            Route::group(['prefix' => '{id}/images', 'where' => ['idImage' => '[0-9]+']], function() {
+           
+                Route::get('', ['as' => 'products.images.index', 'uses' => 'ProductsImagesController@index']);
+                Route::post('', ['as' => 'products.images.store', 'uses' => 'ProductsImagesController@store']);
+                Route::get('create', ['as' => 'products.images.create', 'uses' => 'ProductsImagesController@create']);
+                Route::get('{idImage}/destroy', ['as' => 'products.images.destroy', 'uses' => 'ProductsImagesController@destroy']);
+            });
+            
         });
     });
 

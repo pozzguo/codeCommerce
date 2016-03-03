@@ -20,5 +20,11 @@ class Product extends Model {
         return $this->belongsTo('codeCommerce\Category');
                 
     }
+    
+    public function images() {
+        
+        return $this->hasMany('codeCommerce\ProductImage');
+                
+    }
 
 }
