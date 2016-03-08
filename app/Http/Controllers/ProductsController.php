@@ -9,6 +9,7 @@ use codeCommerce\Http\Controllers\Controller;
 
 use codeCommerce\Product;
 use codeCommerce\Category;
+use codeCommerce\Tag;
 
 class ProductsController extends Controller
 {
@@ -44,7 +45,32 @@ class ProductsController extends Controller
         
         $product->save();
         
+        $tags = $request->tags;
+        
+        $t = $this->addTags($product, $tags);
+        
         return redirect()->route('products.index');
+    }
+    
+    private function addTags($product,$tags){
+        
+        //Insert New Tags or get a id for existents tags:
+        $idsTags = array(); //Initiates array to get tag's ids
+        $tags = strtolower($tags); //All tags to lower case!
+        $tagsArray = explode(",",$tags); //Transform tags strings in array
+   
+        foreach ($tagsArray as $tag){
+            $tag=  trim($tag);
+            $newTag = Tag::firstOrCreate(['name' => $tag]);
+            $idsTags[] = $newTag->id;
+        }
+        
+        //Attach tags with array idsTags by Sinc():
+        sort($idsTags);
+        $product->tags()->sync($idsTags);
+        
+        return;
+        
     }
     
     public function destroy($id){
@@ -67,7 +93,12 @@ class ProductsController extends Controller
         
         $input = $request->all();
         
-        $product = $this->productModel->find($id)->update($input);
+        $product = $this->productModel->find($id);
+        $product->update($input);
+        
+        $tags = $request->tags;
+        
+        $t = $this->addTags($product, $tags);
         
         return redirect()->route('products.index');
     }

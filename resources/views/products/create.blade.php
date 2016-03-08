@@ -45,7 +45,7 @@
                     <div class="form-group">
 
                         {!! Form::label('price','Price: ') !!} 
-                        {!! Form::number('price',null,['class' => 'form-control', 'step'=>'0.01']) !!}
+                        {!! Form::number('price',null,['class'=>'form-control-static', 'step'=>'0.01']) !!}
                         
                     </div>
                     
@@ -53,7 +53,7 @@
 
                         {!! Form::label('featured','Featured? ') !!} 
                         {!! Form::hidden('featured',false) !!}
-                        {!! Form::checkbox('featured',true,true,['class' => 'form-control']) !!}
+                        {!! Form::checkbox('featured',true,true,['class' => 'form-control-static']) !!}
                         
                     </div>
                     
@@ -61,7 +61,14 @@
 
                         {!! Form::label('recommend','Recommend? ') !!} 
                         {!! Form::hidden('recommend',false) !!}
-                        {!! Form::checkbox('recommend',true,true,['class' => 'form-control']) !!}
+                        {!! Form::checkbox('recommend',true,true,['class' => 'form-control-static']) !!}
+                        
+                    </div>
+                    
+                     <div class="form-group">
+
+                        {!! Form::label('tags','Tags: ') !!} 
+                        {!! Form::textarea('tags',null,['class' => 'form-control']) !!}
                         
                     </div>
                     
