@@ -8,12 +8,12 @@
         <title>Home | E-Shop</title>
 
 
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/prettyPhoto.css" rel="stylesheet">
-        <link href="css/animate.css" rel="stylesheet">
-        <link href="css/main.css" rel="stylesheet">
-        <link href="css/responsive.css" rel="stylesheet">
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/prettyPhoto.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
 
 
     </head><!--/head-->
@@ -57,6 +57,7 @@
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
                                     <li><a href="#"><i class="fa fa-user"></i> Minha conta</a></li>
+                                    <li><a href="{{ route('admin.index') }}"><i class="fa fa-lock"></i> Admin...</a></li>
                                     <li><a href="http://commerce.dev:10088/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                     <li><a href="http://commerce.dev:10088/cart"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
                                     <li><a href="http://commerce.dev:10088/auth/login"><i class="fa fa-lock"></i> Login</a></li>
@@ -148,11 +149,11 @@
 
 
 
-        <script src="js/jquery.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.scrollUp.min.js"></script>
-        <script src="js/jquery.prettyPhoto.js"></script>
-        <script src="js/main.js"></script>
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.scrollUp.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.prettyPhoto.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
 
     </body>
 </html>

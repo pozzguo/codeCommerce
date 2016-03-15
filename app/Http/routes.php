@@ -28,7 +28,7 @@ Route::group(['prefix' => 'list', 'where' => ['id' => '[0-9]+']], function() {
 //In Admin:
     Route::group(['prefix' => 'admin', 'where' => ['id' => '[0-9]+']], function() {
         
-        Route::get('', ['as' => 'admin.index', 'uses' => 'WelcomeController@index']);
+        Route::get('', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
 
         Route::group(['prefix' => 'categories'], function() {
             Route::get('', ['as' => 'categories.index', 'uses' => 'CategoriesController@index']);
