@@ -16,13 +16,19 @@
   });
  */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'StoreController@index');
 
 Route::group(['middleware' => ['web']], function () {
 
+Route::group(['prefix' => 'list', 'where' => ['id' => '[0-9]+']], function() {
+    Route::get('products/{id}', ['as' => 'list.products', 'uses' => 'StoreController@listProducts']);
+});
+    
 //Models manipulation:
 //In Admin:
     Route::group(['prefix' => 'admin', 'where' => ['id' => '[0-9]+']], function() {
+        
+        Route::get('', ['as' => 'admin.index', 'uses' => 'WelcomeController@index']);
 
         Route::group(['prefix' => 'categories'], function() {
             Route::get('', ['as' => 'categories.index', 'uses' => 'CategoriesController@index']);

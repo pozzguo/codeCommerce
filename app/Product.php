@@ -39,4 +39,23 @@ class Product extends Model {
         return implode(',',$tags);
         return "tags,tags,tags,tags";
     }
+    
+    public function scopeFeatured($query){
+        
+        return $query->where('featured',    '=', 1)->orderBy('name')->get();
+        
+    }
+    
+    
+    public function scopeRecommended($query){
+        
+        return $query->where('recommend', '=', 1)->orderBy('name')->get();
+        
+    }
+    
+    public function scopeProductOfCategory($query,$id){
+        
+        return $query->where('category', '=', $id)->orderBy('name')->get();
+        
+    }
 }
