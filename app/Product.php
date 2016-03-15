@@ -55,7 +55,7 @@ class Product extends Model {
     
     public function scopeProductOfCategory($query,$id){
         
-        return $query->where('category', '=', $id)->orderBy('name')->get();
+        return $query->where('category_id', '=', $id)->orderBy('name')->get();
         
     }
 }
