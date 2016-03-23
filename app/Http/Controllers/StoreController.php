@@ -30,7 +30,7 @@
           return view('store.index', compact('categories', 'productFeatured','productRecommended'));
       }
       
-      public function listProducts($id){
+      public function category($id){
           
           $categories = $this->categoryModel->orderBy('name')->get();
           
@@ -39,7 +39,16 @@
           $productOfCategory = $this->productModel->productOfCategory($id);
      
           
-          return view('store.listproducts', compact('categories', 'category', 'productOfCategory'));
+          return view('store.category', compact('categories', 'category', 'productOfCategory'));
+      }
+      
+      public function product($id){
+          
+          $categories = $this->categoryModel->orderBy('name')->get();
+          
+          $product = $this->productModel->find($id);
+
+          return view('store.product', compact('categories', 'product'));
       }
 
   }

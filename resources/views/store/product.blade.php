@@ -5,5 +5,5 @@
 @stop
 
 @section('content')
-   @include('store.products_featured_recommended')
+   @include('store.product_detail')
 @stop
