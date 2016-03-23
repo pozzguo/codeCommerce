@@ -37,7 +37,6 @@ class Product extends Model {
         
         $tags = $this->tags->lists('name')->all();
         return implode(',',$tags);
-        return "tags,tags,tags,tags";
     }
     
     public function scopeFeatured($query){
