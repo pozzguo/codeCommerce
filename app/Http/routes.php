@@ -20,9 +20,13 @@
 
   Route::group(['middleware' => ['web']], function () {
 
-      Route::get('category/{id}', ['as' => 'store.category', 'uses' => 'StoreController@category', 'where' => ['id' => '[0-9]+']]);
-      Route::get('product/{id}',  ['as' => 'store.product',  'uses' => 'StoreController@product',  'where' => ['id' => '[0-9]+']]);
-      Route::get('tag/{id}',      ['as' => 'store.tag',      'uses' => 'StoreController@tag',      'where' => ['id' => '[0-9]+']]);
+      Route::get('category/{id}',     ['as' => 'store.category', 'uses' => 'StoreController@category',   'where' => ['id' => '[0-9]+']]);
+      Route::get('product/{id}',      ['as' => 'store.product',  'uses' => 'StoreController@product',   'where' => ['id' => '[0-9]+']]);
+      Route::get('tag/{id}',          ['as' => 'store.tag',      'uses' => 'StoreController@tag',       'where' => ['id' => '[0-9]+']]);
+      Route::get('cart',              ['as' => 'cart',           'uses' => 'CartController@index']);
+      Route::get('cart/add/{id}',     ['as' => 'cart.add',       'uses' => 'CartController@add',        'where' => ['id' => '[0-9]+']]);
+      Route::get('cart/remove/{id}',  ['as' => 'cart.remove',    'uses' => 'CartController@remove',     'where' => ['id' => '[0-9]+']]);
+      Route::get('cart/destroy/{id}', ['as' => 'cart.destroy',   'uses' => 'CartController@destroy',    'where' => ['id' => '[0-9]+']]);
 
 
 //Models manipulation:
@@ -61,9 +65,9 @@
 
 
 // Authentication routes...
-      Route::get('auth/login', 'Auth\AuthController@getLogin');
+      Route::get('auth/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
       Route::post('auth/login', 'Auth\AuthController@postLogin');
-      Route::get('auth/logout', 'Auth\AuthController@getLogout');
+      Route::get('auth/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
 
 // Registration routes...
       Route::get('auth/register', 'Auth\AuthController@getRegister');
