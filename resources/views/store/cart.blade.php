@@ -75,7 +75,7 @@
                                     </span>
                                     
                                     @if( $cart->getTotal() > 0 )
-                                        <a href='#' class='btn btn-success'>Fechar a Conta</a>
+                                        <a href='{{ route('checkout.place') }}' class='btn btn-success'>Fechar a Conta</a>
                                     @endif    
 
                                 </div>

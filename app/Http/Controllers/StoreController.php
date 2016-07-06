@@ -2,12 +2,12 @@
 
   namespace codeCommerce\Http\Controllers;
 
-  use Illuminate\Http\Request;
-  use codeCommerce\Http\Requests;
   use codeCommerce\Http\Controllers\Controller;
   use codeCommerce\Category;
   use codeCommerce\Product;
   use codeCommerce\Tag;
+  //use Auth;
+  
 
   class StoreController extends Controller {
 
@@ -30,6 +30,8 @@
 
           $productFeatured    = $this->productModel->featured();
           $productRecommended = $this->productModel->recommended();
+          
+          //dd(Auth::user());
 
           return view('store.index', compact('categories', 'productFeatured','productRecommended'));
       }

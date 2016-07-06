@@ -16,9 +16,15 @@
     });
    */
 
-  Route::get('/', 'StoreController@index');
+  
 
   Route::group(['middleware' => ['web']], function () {
+      
+      Route::get('error/unauthorized',['as' => 'unauthorized', function (){
+          return view('errors.unauthorized');
+      }]);
+      
+      Route::get('/', 'StoreController@index');
 
       Route::get('category/{id}',     ['as' => 'store.category', 'uses' => 'StoreController@category',   'where' => ['id' => '[0-9]+']]);
       Route::get('product/{id}',      ['as' => 'store.product',  'uses' => 'StoreController@product',   'where' => ['id' => '[0-9]+']]);
@@ -31,10 +37,10 @@
 
 //Models manipulation:
 //In Admin:
-      Route::group(['prefix' => 'admin', 'where' => ['id' => '[0-9]+']], function() {
+      Route::group(['prefix' => 'admin', 'middleware' => ['auth','checkAdmin'], 'where' => ['id' => '[0-9]+']], function() {
 
           Route::get('', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
-
+          
           Route::group(['prefix' => 'categories'], function() {
               Route::get('', ['as' => 'categories.index', 'uses' => 'CategoriesController@index']);
               Route::post('', ['as' => 'categories.store', 'uses' => 'CategoriesController@store']);
@@ -62,16 +68,9 @@
               });
           });
       });
+      
+     Route::get('checkout/placeOrder', ['as' => 'checkout.place', 'middleware' => ['auth'], 'uses' => 'CheckoutController@place']); 
 
-
-// Authentication routes...
-      Route::get('auth/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
-      Route::post('auth/login', 'Auth\AuthController@postLogin');
-      Route::get('auth/logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
-
-// Registration routes...
-      Route::get('auth/register', 'Auth\AuthController@getRegister');
-      Route::post('auth/register', 'Auth\AuthController@postRegister');
   });
 
   Route::get('phpinfo', function () {
@@ -79,18 +78,9 @@
   }
   );
 
-  /*
-    |--------------------------------------------------------------------------
-    | Application Routes
-    |--------------------------------------------------------------------------
-    |
-    | This route group applies the "web" middleware group to every route
-    | it contains. The "web" middleware group is defined in your HTTP
-    | kernel and includes session state, CSRF protection, and more.
-    |
-   */
-
-  Route::group(['middleware' => ['web']], function () {
-//
-  });
   
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'StoreController@index');
+});

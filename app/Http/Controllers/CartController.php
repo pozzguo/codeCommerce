@@ -4,7 +4,6 @@ namespace codeCommerce\Http\Controllers;
 
 use Illuminate\Session\Store as Session;
 
-use codeCommerce\Http\Requests;
 use codeCommerce\Http\Controllers\Controller;
 
 use codeCommerce\Cart as Cart;

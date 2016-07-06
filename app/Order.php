@@ -1,10 +1,26 @@
 <?php
 
-namespace codeCommerce;
+  namespace codeCommerce;
 
-use Illuminate\Database\Eloquent\Model;
+  use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
-{
-    //
-}
+  class Order extends Model {
+      
+      protected $fillable =[
+          'user_id',
+          'total',
+          'status'
+      ];
+
+      public function items() {
+
+          return $this->hasMany('CodeCommerce\OrderItem');
+      }
+
+      public function user() {
+
+          return $this->belongsTo('CodeCommerce\User');
+      }
+
+  }
+  
