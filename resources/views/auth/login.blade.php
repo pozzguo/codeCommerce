@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('store.store')
 
 @section('content')
 <div class="container">
@@ -53,8 +53,13 @@
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fa fa-btn fa-sign-in"></i>Login
                                 </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+                                
+                                <a class="btn btn-link" href="{{ url('/password/reset') }}">Esqueceu sua senha?</a>
+                                  <br>
+                                  <br>
+                                <p>
+                                <a class="btn btn-success" href="{{ url('/register') }}">Registrar!</a>
+                                </p>
                             </div>
                         </div>
                     </form>

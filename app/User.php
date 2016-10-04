@@ -26,7 +26,7 @@
 
       public function orders() {
 
-          return $this->hasMany('CodeCommerce\Order');
+          return $this->hasMany('codeCommerce\Order');
       }
 
   }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('store.store')
 
 @section('content')
 <div class="container">
@@ -61,6 +61,20 @@
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('adress') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Endereco:</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="adress" value="{{ old('adress') }}">
+
+                                @if ($errors->has('adress'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('adress') }}</strong>
                                     </span>
                                 @endif
                             </div>

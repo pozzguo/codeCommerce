@@ -16,7 +16,13 @@ class OrderItem extends Model
     
     public function order(){
         
-        return $this->belongsTo('CodeCommerce\Order');
+        return $this->belongsTo('codeCommerce\Order');
+        
+    }
+    
+    public function product(){
+        
+        return $this->belongsTo('codeCommerce\Product');
         
     }
         

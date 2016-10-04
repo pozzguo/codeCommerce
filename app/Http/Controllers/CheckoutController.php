@@ -2,16 +2,14 @@
 
 namespace codeCommerce\Http\Controllers;
 
-use Illuminate\Http\Request;
 
-use codeCommerce\Http\Requests;
 use codeCommerce\Http\Controllers\Controller;
 
 use Illuminate\Session\Store as Session;
 
 use codeCommerce\Order as Order;
 use codeCommerce\OrderItem as OrderItem;
-use codeCommerce\Product as Product;
+
 
 use Auth;
 
@@ -53,9 +51,15 @@ class CheckoutController extends Controller
                 
             }
             
-            dd($order->items);
+            $cart->clear();
+            
+            //dd($order->items);
+            
+            return view('store.checkout', compact('order'))->with(['cart' => '']);
             
         }
+        
+        return view('store.checkout', ['cart' => 'empty']);
         
     }
 }
