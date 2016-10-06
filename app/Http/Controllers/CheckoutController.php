@@ -9,6 +9,7 @@ use Illuminate\Session\Store as Session;
 
 use codeCommerce\Order as Order;
 use codeCommerce\OrderItem as OrderItem;
+use codeCommerce\Events\CheckoutEvent;
 
 
 use Auth;
@@ -53,7 +54,12 @@ class CheckoutController extends Controller
             
             $cart->clear();
             
-            //dd($order->items);
+            
+            /** 
+             * Dispara evento:
+             */
+            event(new CheckoutEvent(Auth::user(),$order));
+            
             
             return view('store.checkout', compact('order'))->with(['cart' => '']);
             
