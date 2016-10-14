@@ -44,7 +44,7 @@ class CheckoutController extends Controller
             
             $userId = Auth::user()->id;
             
-            $order = $orderModel->create(['user_id'=>$userId, 'total'=>$cart->getTotal()]);
+            $order = $orderModel->create(['user_id'=>$userId, 'total'=>$cart->getTotal(), 'status_id' => 1]);
             
             foreach ($cart->all() as $k => $item){
                 
@@ -58,7 +58,7 @@ class CheckoutController extends Controller
             /** 
              * Dispara evento:
              */
-            event(new CheckoutEvent(Auth::user(),$order));
+            //event(new CheckoutEvent(Auth::user(),$order));
             
             
             return view('store.checkout', compact('order'))->with(['cart' => '']);

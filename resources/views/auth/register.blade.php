@@ -66,15 +66,85 @@
                             </div>
                         </div>
                         
-                        <div class="form-group{{ $errors->has('adress') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Endereco:</label>
+                        <div class="form-group{{ $errors->has('address_cep') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">CEP:</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="adress" value="{{ old('adress') }}">
+                                <input type="text" class="form-control" name="address_cep" value="{{ old('address_cep') }}">
 
-                                @if ($errors->has('adress'))
+                                @if ($errors->has('address_cep'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('adress') }}</strong>
+                                        <strong>{{ $errors->first('address_cep') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('address_location') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Rua:</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="address_location" value="{{ old('address_location') }}">
+
+                                @if ($errors->has('address_location'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('address_location') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('address_number') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Número:</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="address_number" value="{{ old('address_number') }}">
+
+                                @if ($errors->has('address_number'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('address_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('address_neighborhood') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Bairro:</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="address_neighborhood" value="{{ old('address_neighborhood') }}">
+
+                                @if ($errors->has('address_neighborhood'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('address_neighborhood') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('address_city') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Cidade:</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="address_city" value="{{ old('address_city') }}">
+
+                                @if ($errors->has('address_city'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('address_city') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('address_state') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">UF:</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="address_state" value="{{ old('address_state') }}">
+
+                                @if ($errors->has('address_state'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('address_state') }}</strong>
                                     </span>
                                 @endif
                             </div>

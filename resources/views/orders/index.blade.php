@@ -1,25 +1,30 @@
-@extends('store.store')
+@extends('app')
 
 @section('content')
 <div class="container">
-    <div class="col-md-12">
-        <div class="row">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2>Orders</h2>
+                </div>
 
-            <h3>Meus pedidos:</h3>
-
-            <table class="table">
+                <table class="table">
                 <tbody>
                     <tr>
                         <th>#ID</th>
+                        <th>User</th>
                         <th>Itens</th>
                         <th>Valor</th>
                         <th>Status</th>
+                        <th>Actions</th>
                     </tr>
                 </tbody>
 
                 @foreach($orders as $order)
                 <tr>
                     <td>{{ $order->id }}</td>
+                    <td>{{ $order->user->name }}<br>{{ $order->user->email }}</td>
                     <td>
                         <ul>
                         @foreach($order->items as $item)
@@ -28,13 +33,18 @@
                         </ul>
                     </td>
                     <td>{{ $order->total }}</td>
-                    <td>{{ $order->status->description }}</td>
+                    <td>{{ $order->status_id }} - {{ $order->status->description }}</td>
+                    <td><a href="{{ route('orders.edit',['id' => $order->id]) }}">Edit</a> | <a href="{{ route('orders.destroy',['id' => $order->id]) }}">Delete</a></td>
                 </tr>
                 @endforeach
 
             </table>
+                
+                {!! $orders->render() !!}
+                
+            </div>
         </div>
-        <div class="row">&nbsp;<br></div>
     </div>
 </div>
-@stop
+@endsection
+

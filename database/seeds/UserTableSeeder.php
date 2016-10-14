@@ -18,9 +18,10 @@ class UserTableSeeder extends Seeder {
 
         factory('codeCommerce\User')->create(
                 [
-                    'name' => 'Walter',
-                    'email' => 'walter@todotech.com.br',
-                    'password' => '12345',
+                    'name' => 'Admin',
+                    'email' => 'admin@codecommerce.com.br',
+                    'password' => bcrypt('12345'),
+                    'is_admin' => 1
                 ]
         );
         

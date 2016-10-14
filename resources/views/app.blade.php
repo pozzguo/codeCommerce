@@ -55,6 +55,8 @@
                             <!--<ul class="dropdown-menu" role="menu">-->
                                 <li><a href="{{ route('categories.index') }}">Categories</a></li>
                                 <li><a href="{{ route('products.index') }}">Products</a></li>
+                                <li><a href="{{ route('status.index') }}">Status</a></li>
+                                <li><a href="{{ route('orders.index') }}">Orders</a></li>
                             </ul>
                         </li>
                     </ul>

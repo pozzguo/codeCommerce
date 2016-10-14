@@ -40,6 +40,24 @@ Route::group(['middleware' => ['web']], function () {
     Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkAdmin'], 'where' => ['id' => '[0-9]+']], function() {
 
         Route::get('', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
+        
+        Route::group(['prefix' => 'orders'], function() {
+            Route::get('', ['as' => 'orders.index', 'uses' => 'OrdersController@index']);
+            Route::post('', ['as' => 'orders.store', 'uses' => 'OrdersController@store']);
+            Route::put('{id}/update', ['as' => 'orders.update', 'uses' => 'OrdersController@update']);
+            Route::get('create', ['as' => 'orders.create', 'uses' => 'OrdersController@create']);
+            Route::get('{id}/destroy', ['as' => 'orders.destroy', 'uses' => 'OrdersController@destroy']);
+            Route::get('{id}/edit', ['as' => 'orders.edit', 'uses' => 'OrdersController@edit']);
+        });
+        
+        Route::group(['prefix' => 'status'], function() {
+            Route::get('', ['as' => 'status.index', 'uses' => 'StatusController@index']);
+            Route::post('', ['as' => 'status.store', 'uses' => 'StatusController@store']);
+            Route::put('{id}/update', ['as' => 'status.update', 'uses' => 'StatusController@update']);
+            Route::get('create', ['as' => 'status.create', 'uses' => 'StatusController@create']);
+            Route::get('{id}/destroy', ['as' => 'status.destroy', 'uses' => 'StatusController@destroy']);
+            Route::get('{id}/edit', ['as' => 'status.edit', 'uses' => 'StatusController@edit']);
+        });
 
         Route::group(['prefix' => 'categories'], function() {
             Route::get('', ['as' => 'categories.index', 'uses' => 'CategoriesController@index']);
