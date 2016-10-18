@@ -14,6 +14,7 @@
                         <th>Itens</th>
                         <th>Valor</th>
                         <th>Status</th>
+                        <th>Ações</th>
                     </tr>
                 </tbody>
 
@@ -29,6 +30,13 @@
                     </td>
                     <td>{{ $order->total }}</td>
                     <td>{{ $order->status->description }}</td>
+                    <td>
+                        @if(1 == $order->status->id)
+                        <a href="{{ route('checkout.payOrder',['orderId' => $order->id]) }}">Pagar</a>
+                        @else
+                          - 
+                        @endif
+                    </td>
                 </tr>
                 @endforeach
 

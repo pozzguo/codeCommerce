@@ -24,6 +24,18 @@ class StatusTableSeeder extends Seeder {
         
         factory('codeCommerce\Status')->create(
                 [
+                    'description' => 'Aguardando Pagamento',
+                ]
+        );
+        
+        factory('codeCommerce\Status')->create(
+                [
+                    'description' => 'Pagamento em Análise',
+                ]
+        );
+        
+        factory('codeCommerce\Status')->create(
+                [
                     'description' => 'Pago',
                 ]
         );

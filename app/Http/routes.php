@@ -89,6 +89,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['auth'], 'where' => ['id' => '[0-9]+']], function() {
         Route::get('checkout/placeOrder', ['as' => 'checkout.place', 'uses' => 'CheckoutController@place']);
+        Route::get('checkout/payOrder/{idOrder}', ['as' => 'checkout.payOrder', 'uses' => 'CheckoutController@payOrder']);
         Route::get('account/orders', ['as' => 'account.orders', 'uses' => 'AccountController@orders']);
     });
 });
