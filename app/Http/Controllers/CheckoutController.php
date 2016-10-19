@@ -11,6 +11,9 @@ use PHPSC\PagSeguro\Items\Item;
 use PHPSC\PagSeguro\Requests\Checkout\CheckoutService;
 use Auth;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 class CheckoutController extends Controller {
 
     private $cart;
@@ -44,6 +47,8 @@ class CheckoutController extends Controller {
 
                 $order->items()->create(['product_id' => $k, 'price' => $item['price'], 'qtd' => $item['qtd']]);
             }
+            
+            $this->session->set('orderId', $order->id);
 
             $cart->clear();
 
@@ -63,6 +68,7 @@ class CheckoutController extends Controller {
     public function payOrder($orderId, Order $orderModel, CheckoutService $checkoutService) {
 
         $order = $orderModel->find($orderId);
+        $this->session->set('orderId', $orderId);
 
         if ($order) {
 
@@ -82,6 +88,35 @@ class CheckoutController extends Controller {
         }
 
         return view("errors.noorders");
+    }
+    
+    public function payReturn(Request $request, Order $orderModel){
+        
+        //Pega o código de retorno do pagseguro:
+        $pagSeguroId = $request->input('pagSeguroId', 'empty');
+        
+        //Pega o número da order que está na sessão:
+        $orderId = $this->session->get('orderId');
+        
+        //Associa o ID do pagseguro à order:
+        if($orderId){
+           $order = $orderModel->find($orderId); 
+           $order->pagSeguroId = $pagSeguroId;
+           $order->save();
+        }   
+        
+        Log::info('::.Pay.Return.::',['request' => $request->all()]);
+        
+        return view('store.returnpay', ['pagSeguroId' => $pagSeguroId]);
+        
+    }
+    
+    public function payTransactionChange(Request $request){
+        
+        Log::info('::.Pay.StatusChange.::',['request' => $request->all()]);
+        
+        return response('Ok', 200)
+                  ->header('Content-Type', 'text/plain');
     }
 
 }

@@ -17,6 +17,7 @@
                         <th>Itens</th>
                         <th>Valor</th>
                         <th>Status</th>
+                        <th>IdPag</th>
                         <th>Actions</th>
                     </tr>
                 </tbody>
@@ -34,6 +35,7 @@
                     </td>
                     <td>{{ $order->total }}</td>
                     <td>{{ $order->status_id }} - {{ $order->status->description }}</td>
+                    <td>{{ $order->pagSeguroId }}</td>
                     <td><a href="{{ route('orders.edit',['id' => $order->id]) }}">Edit</a> | <a href="{{ route('orders.destroy',['id' => $order->id]) }}">Delete</a></td>
                 </tr>
                 @endforeach

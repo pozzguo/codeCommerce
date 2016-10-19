@@ -25,6 +25,9 @@ Route::group(['middleware' => ['web']], function () {
         }]);
 
     Route::get('/', 'StoreController@index');
+    
+    Route::get('checkout/payReturn', ['as' => 'checkout.payReturn', 'uses' => 'CheckoutController@payReturn']);
+    Route::get('checkout/payTransactionChange', ['as' => 'checkout.payTransactionChange', 'uses' => 'CheckoutController@payTransactionChange']);
 
     Route::get('category/{id}', ['as' => 'store.category', 'uses' => 'StoreController@category', 'where' => ['id' => '[0-9]+']]);
     Route::get('product/{id}', ['as' => 'store.product', 'uses' => 'StoreController@product', 'where' => ['id' => '[0-9]+']]);
@@ -104,4 +107,5 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/home', 'StoreController@index');
+    
 });
